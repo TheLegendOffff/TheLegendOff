@@ -1,0 +1,35 @@
+/*"Reset" on all web elements*/
+* {
+	/*Removes the default outer spacing on ALL elements*/
+	margin: 0;
+	/*Removes the default inner spacing on ALL elements*/
+	padding: 0;
+	/*Makes width/height include padding and border - prevents unexpected sizing*/
+	box-sizing: border-box;
+}
+
+html, body {
+	/*Let the page always fill at least the full screen height*/
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	/*Load the wood table texture as the page background*/
+	background-image: url("woodenTable.jpg");
+	/*Background color when image can't be loaded*/
+	background-color: rgb(144, 63, 0);
+	/*Scale the image to always fully cover the viewport, cropping if needed*/
+	background-size: cover;
+	/*Center the image so the most interesting part stays visible*/
+	background-position: center;
+	/*Don't tile/repeat the image*/
+	background-repeat: no-repeat;
+	/*Keep the background fixed in place while the page scrolls (optional "desk stays put" feel)*/
+	background-attachment: fixed;
+	/*Stack children vertically*/
+	display: flex;
+	flex-direction: column;
+	/*Always at least as tall as the viewport*/
+	min-height: 100vh;
+}

@@ -1,0 +1,25 @@
+footer {
+	/*Push the footer down: this eats up all leftover space above it*/
+	margin-top: auto;
+	/*Push the footer to the very bottom of the page content*/
+	width: 100%;
+	/*Lay the links out in a row, centered*/
+	display: flex;
+	justify-content: center;
+	/*Space between the links*/
+	gap: 40px;
+	/*Breathing room above and below*/
+	padding: 1.5rem 0;
+}
+
+footer a {
+	/*Muted color, footer links shouldn't shout*/
+	color: #000000;
+	text-decoration: none;
+	font-size: 13px;
+}
+
+/*Underline only on hover, so it's clear it's clickable*/
+footer a:hover {
+	text-decoration: underline;
+}

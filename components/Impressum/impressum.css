@@ -1,0 +1,14 @@
+main {
+	/*Keep the text block readable, not full page width*/
+	max-width: 600px;
+	/*Center the block horizontally*/
+	margin: 0 auto;
+	/*Space around the text*/
+	padding: 3rem 1.5rem;
+	/*Comfortable line spacing for reading*/
+	line-height: 1.6;
+}
+
+a {
+	color: #6B5416;
+}
