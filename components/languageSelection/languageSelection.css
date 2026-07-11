@@ -1,0 +1,49 @@
+.languageSelection {
+	/*For testing and seeing better*/
+	/*background-color: brown;
+
+	/*Fix the element to the viewport so it stays in the corner even when scrolling*/
+	position: fixed;
+	/*Distance from the top edge of the page*/
+	top: 1rem;
+	/*Distance from the right edge of the page*/
+	right: 1rem;
+	/*Lay the language buttons out in a row, side by side*/
+	display: flex;
+	/*Space between the buttons*/
+	gap: 30px;
+	/*Keep this on top of other page content*/
+	z-index: 100;
+}
+
+.languageButton {
+	/*Post-it yellow*/
+	background-color: #F2D477;
+	/*Dark brown text so it reads like handwriting on paper*/
+	color: #6B5416;
+	/*Small fixed size so all three notes look the same*/
+	width: 70px;
+	height: 70px;
+	/*No border, post-its don't have one*/
+	border: none;
+	/*Slight rounding on the corners, like a real sticky note*/
+	border-radius: 2px;
+	/*Small readable text*/
+	font-size: 15px;
+	font-weight: 500;
+	font-family: 'Times New Roman', Times, serif;
+	/*Soft drop shadow to lift the note off the page*/
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.25);
+	/*Pointer cursor to show it's clickable*/
+	cursor: pointer;
+	/*Apply the rotation set inline via the --rotation variable*/
+	transform: rotate(var(--rotation));
+	/*Smooth transition for the hover effect below*/
+	transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/*On hover, straighten the note and lift it slightly to invite a click*/
+.languageButton:hover {
+	transform: rotate(0deg) translateY(-2px);
+	box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.3);
+}
