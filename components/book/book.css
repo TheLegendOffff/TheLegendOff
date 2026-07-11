@@ -1,0 +1,51 @@
+#flipbook {
+	/*Total width of the book (both pages together)*/
+	width: 900px;
+	/*Height of the book*/
+	height: 600px;
+}
+
+#flipbook .hard {
+	/* Removes the page image from the cover */
+	background-image: none !important;
+	/*Dark brown - like a leather book cover*/
+	background-color: #8800e2;
+	/*Text color - warm off-white*/
+	color: #f5f0e8;
+	/*Larger text for the cover title*/
+	font-size: 24px; 
+	/*Classic book font*/
+	font-family: Georgia, serif;
+	/*Enables Flexbox to center the cover text*/
+	display: flex;
+	/*Centers text horizontally*/
+	justify-content: center;
+	/*Centers text vertically*/
+	align-items: center;
+}
+
+.front {
+	font-size: 10px;
+}
+
+.dedication {
+	font-size: 16px;
+	font-style: italic;
+	text-align: center;
+}
+
+.back {
+	font-size: 10px;
+}
+
+
+/* Page number */
+.page-number {
+	position: absolute; /* Positions relative to .page */
+	bottom: 5px; /* Distance from bottom of the page */
+	left: 50%; /* Start at horizontal center */
+	transform: translateX(-50%); /* Shifts it back by half its own width to truly center it */
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 12px;
+	color: #000000;
+}

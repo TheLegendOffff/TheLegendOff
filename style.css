@@ -19,6 +19,7 @@ body {
 	background-image: url("woodenTable.jpg");
 	/*Background color when image can't be loaded*/
 	background-color: rgb(144, 63, 0);
+
 	/*Scale the image to always fully cover the viewport, cropping if needed*/
 	background-size: cover;
 	/*Center the image so the most interesting part stays visible*/
@@ -28,8 +29,17 @@ body {
 	/*Keep the background fixed in place while the page scrolls (optional "desk stays put" feel)*/
 	background-attachment: fixed;
 	/*Stack children vertically*/
+	/*Enables Flexbox: allows us to center the flipbook inside it*/
 	display: flex;
 	flex-direction: column;
 	/*Always at least as tall as the viewport*/
 	min-height: 100vh;
+	/*Centers horizontally*/
+	justify-content: center;
+	/*Centers vertically*/
+	align-items: center;
+	/*Full viewport height, so vertical centering has room to work with*/
+	height: 100vh;
+	/*Prevents scrollbar during the page flip animation*/
+	overflow: hidden;
 }
