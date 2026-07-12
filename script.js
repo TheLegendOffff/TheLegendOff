@@ -55,6 +55,10 @@ async function createBook() {
 		autoCenter: true,
 		gradients: true
 	});
+
+	// Enable turning pages with the left/right arrow keys
+	enableKeyboardNavigation();
+
 	console.log("createBook end");
 }
 
@@ -140,6 +144,23 @@ function createTableOfContents(flipbook) {
 	});
 
 	console.log("	createTableOfContents end");
+}
+
+/**
+ * Enables navigating the book with the keyboard's left/right arrow keys.
+ * Listens on the whole document, so it works no matter where the user last clicked.
+ */
+function enableKeyboardNavigation() {
+	document.addEventListener("keydown", (event) => {
+		// Right arrow key pressed - flip to the next page
+		if (event.key === "ArrowRight") {
+			$("#flipbook").turn("next");
+		}
+		// Left arrow key pressed - flip back to the previous page
+		else if (event.key === "ArrowLeft") {
+			$("#flipbook").turn("previous");
+		}
+	});
 }
 
 // Add a click listener to each button
