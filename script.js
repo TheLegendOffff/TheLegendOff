@@ -6,13 +6,11 @@ let language = "de";
 const languageButtons = document.querySelectorAll(".languageButton");
 // List of chapter files, in the order they should appear in the book
 const bookFiles = [
-	"mythology",/**/
 	"frontCover",/**/
 	"dedication",/**/
 	"tableOfContents"/**/,
 	"mythology",/**/
-	"page",/**/
-	"page",/**/
+	"mythologyAct1",/**/
 	"page",/**/
 	"backCover",/**/
 ];
@@ -87,49 +85,58 @@ function addPageNumbers(flipbook) {
 }
 
 /**
- * Collects every page marked with data-toc-title and lists it on the table of contents page
+ * Collects every page marked with data-chapter or data-sub-chapter and lists it on the table of contents page
  * @param {*} flipbook the element to add the table of contents entries to
  */
 function createTableOfContents(flipbook) {
 	console.log("	createTableOfContents start");
 
-	// Find the <ul> element with class "tocList" (inside tableOfContents.html)
-	const tocList = flipbook.querySelector(".tocList");
+	const chapterList = flipbook.querySelector(".chapterList");
 
-	// If this book has no table of contents page, there's nothing to do
-	if (!tocList) {
+	if (!chapterList) {
 		return;
 	}
 
-	// Find every page that has a data-toc-title attribute set - these are the
-	// pages we marked as "this should show up in the table of contents"
-	const chapterPages = flipbook.querySelectorAll("[data-toc-title]");
+	// Select pages that have either attribute, in document order
+	const chapterPages = flipbook.querySelectorAll("[data-chapter], [data-sub-chapter]");
 
-	// Build one list entry (<li><a>...</a></li>) per matching page
 	chapterPages.forEach((page) => {
-		// Read the chapter's title from its data-toc-title attribute
-		const title = page.dataset.tocTitle;
+		// A page has either data-chapter OR data-sub-chapter, never both -
+		// figure out which one this page has, and remember it's a sub-chapter or not
+		const isSubChapter = page.dataset.subChapter !== undefined;
+		const title = isSubChapter ? page.dataset.subChapter : page.dataset.chapter;
 
-		// Read the page number that addPageNumbers() already wrote onto this page,
-		// so the table of contents knows which page to jump to
 		const pageNumber = page.querySelector(".page-number").textContent;
 
-		// Create the list item and the clickable link inside it
 		const listItem = document.createElement("li");
+
+		// Add a class to sub-chapter entries, so we can style them differently (e.g. indent them)
+		if (isSubChapter) {
+			listItem.className = "sub-chapter-entry";
+		}
+
+		// Create "links" to chapters
 		const link = document.createElement("a");
 		link.href = "#";
 		link.textContent = title;
 		link.dataset.page = pageNumber;
 
-		// Clicking an entry jumps straight to that page in the book
 		link.addEventListener("click", (event) => {
 			event.preventDefault();
 			$("#flipbook").turn("page", Number(link.dataset.page));
 		});
 
-		// Put the link inside the list item, then the list item inside the tocList
+		// Fills the space between the title and the page number with dots
+		const leader = document.createElement("span");
+		leader.className = "leader";
+
+		const pageNumberSpan = document.createElement("span");
+		pageNumberSpan.textContent = pageNumber;
+
 		listItem.appendChild(link);
-		tocList.appendChild(listItem);
+		listItem.appendChild(leader);
+		listItem.appendChild(pageNumberSpan);
+		chapterList.appendChild(listItem);
 	});
 
 	console.log("	createTableOfContents end");

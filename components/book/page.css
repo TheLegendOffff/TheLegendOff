@@ -46,6 +46,27 @@
 	flex-direction: column;
 }
 
+.page-content {
+	width: 100%;
+	height: 100%;
+	padding: 3rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.chapter-divider {
+	/*Center the chapter name both horizontally and vertically on the page*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.chapter-divider-title {
+	font-size: 36px;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
 .title-text {
 	/*Larger than normal text, so it stands out as a heading*/
 	font-size: 28px;
@@ -55,7 +76,7 @@
 	/*Center the title text horizontally*/
 	text-align: center;
 	/*Distence between top edge*/
-	padding-top: 60px;
+	/*padding-top: 60px;/**/
 }
 
 .title-underline {
@@ -66,7 +87,7 @@
 	display: block;
 	margin: 0 auto;
 	/*Pull it up closer to the title, overriding the page-title's own spacing below it*/
-	margin-top: -20px;
+	margin-top: -10px;
 }
 
 .initiale {
@@ -78,15 +99,6 @@
 	margin-top: 5px;
 	margin-right: 8px;
 	margin-bottom: 4px;
-}
-
-.text-box {
-	/*For testing*/
-	/*background-color: aqua;
-
-	/*Space between the text and the left/right edges of the page*/
-	padding-left: 3rem;
-	padding-right: 3rem;
 }
 
 .page-number {
@@ -117,6 +129,28 @@
 	font-style: italic;
 }
 
-.tableOfContents {
+.chapterList li {
+	padding: 8px 0;
+	/*No more border-bottom line*/
+	display: flex;
+	/*Keeps text and dots aligned along the same baseline*/
+	align-items: baseline;
+}
 
+.chapterList a {
+	color: inherit;
+	text-decoration: none;
+	/*Prevent long chapter titles from wrapping onto a second line*/
+	white-space: nowrap;
+}
+
+/*Fills the remaining space between title and page number with a dotted line*/
+.chapterList .leader {
+	flex: 1;
+	border-bottom: 1px dotted #000000;
+	margin: 0 6px;
+}
+
+.chapterList a:hover {
+	text-decoration: underline;
 }
