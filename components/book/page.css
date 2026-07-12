@@ -80,14 +80,27 @@
 }
 
 .title-underline {
+	/*Load the divider image as a background instead of an <img> tag - 
+	  path is relative to this CSS file, not to index.html*/
+	background-image: url("../../images/underline.png");
+	/*Show the whole image without cropping or stretching*/
+	background-size: contain;
+	/*Center it horizontally within the element*/
+	background-position: center;
+	/*Don't tile the image*/
+	background-repeat: no-repeat;
+
 	/*Control the divider's width directly here*/
+	/*Since it's no longer an <img>, we need to give it explicit dimensions -
+	  a background-image has no natural size on its own like an <img> would*/
 	width: 80%;
+	height: 15%;/**/
+	
 	/*Images are inline by default and don't respect text-align on a flex parent - 
 	  make it block-level so it can be centered with margin auto*/
-	display: block;
 	margin: 0 auto;
 	/*Pull it up closer to the title, overriding the page-title's own spacing below it*/
-	margin-top: -10px;
+	margin-top: -15px;
 }
 
 .initiale {
