@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+	<!--Name of the page-->
+	<title>The Legend Off</title>
+	<!--Decoding in UTF-8-->
+	<meta charset="UTF-8">
+	<!--Favicon shown in the browser tab-->
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<!--Reference to css-->
+	<!--Main css-->
+	<link rel="stylesheet" href="style.css">
+	<!--Language selection css-->
+	<link rel="stylesheet" href="components/languageSelection/languageSelection.css">
+	<!--Book-->
+	<link rel="stylesheet" href="components/book/book.css">
+
+	<!--Page-->
+	<link rel="stylesheet" href="components/book/page.css">
+
+	<!--Footer css-->
+	<link rel="stylesheet" href="components/footer/footer.css">
+	<!--Impressum css-->
+	<link rel="stylesheet" href="components/Impressum/impressum.css">
+</head>
+
+<body>
+	<!--Language selection-->
+	<div class="languageSelection">
+
+		<!--German-->
+		<button class="languageButton" data-lang="de" style="--rotation: -4deg;">
+			Deutsch
+		</button>
+
+		<!--English-->
+		<button class="languageButton" data-lang="en" style="--rotation: 3deg;">
+			English
+		</button>
+
+		<!--Spanish-->
+		<button class="languageButton" data-lang="es" style="--rotation: -2deg;">
+			Español
+		</button>
+
+	</div>
+
+	<!--Book container - filled dynamically by script.js-->
+	<div id="flipbook"></div>
+
+	<!--Flip buttons-->
+	<div class="flipers">
+		
+	</div>
+
+	<!--Footer-->
+	<footer>
+		<a href="components/Impressum/impressum.html">Impressum</a>
+		<!--YouTube-->
+		<a href="https://www.instagram.com/thelegendoffff/" target="_blank" rel="noopener">YouTube</a>
+		<!--Instagram-->
+		<a href="https://www.instagram.com/thelegendoffff/" target="_blank" rel="noopener">Instagram</a>
+		<!--TikTok-->
+		<a href="https://www.instagram.com/thelegendoffff/" target="_blank" rel="noopener">TikTok</a>
+		<!--Reddit-->
+		<a href="https://www.instagram.com/thelegendoffff/" target="_blank" rel="noopener">Reddit</a>
+		<!--X-->
+		<a href="https://www.instagram.com/thelegendoffff/" target="_blank" rel="noopener">X</a>
+		<!--LinkedIn-->
+		<a href="https://www.instagram.com/thelegendoffff/" target="_blank" rel="noopener">LinkedIn</a>
+	</footer>
+
+	<!--Scripts-->
+	<script src="script.js"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/turn.min.js"></script>
+</body>
+</html>

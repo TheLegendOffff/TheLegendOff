@@ -1,0 +1,64 @@
+/*"Reset" on all web elements*/
+* {
+	/*Removes the default outer spacing on ALL elements*/
+	margin: 0;
+	/*Removes the default inner spacing on ALL elements*/
+	padding: 0;
+	/*Makes width/height include padding and border - prevents unexpected sizing*/
+	box-sizing: border-box;
+}
+
+html, body {
+	/*Let the page always fill at least the full screen height*/
+	height: 100%;
+	width: 100%;
+}
+
+body {
+
+
+	background-color: rgb(144, 63, 0);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	/*Stack children (language selection stays fixed/separate, main + footer flow normally)*/
+	display: flex;
+	flex-direction: column;
+	/*Always fill at least the screen, but allow growing if content is taller*/
+	min-height: 100vh;
+
+	/*Load the wood table texture as the page background*/
+	/*background-image: url("woodenTable.jpg");
+	/*Background color when image can't be loaded*/
+	background-color: rgb(144, 63, 0);
+
+	/*Scale the image to always fully cover the viewport, cropping if needed*/
+	background-size: cover;
+	/*Stack children vertically*/
+	/*Enables Flexbox: allows us to center the flipbook inside it*/
+	display: flex;
+	flex-direction: column;
+	/*Always at least as tall as the viewport*/
+	min-height: 100vh;
+	/*Centers horizontally*/
+	justify-content: center;
+	/*Centers vertically*/
+	align-items: center;
+	/*Full viewport height, so vertical centering has room to work with*/
+	height: 100vh;
+	/*Prevents scrollbar during the page flip animation*/
+	overflow: hidden;
+}
+
+main {
+	/*Take up all leftover vertical space between the top of the page and the footer*/
+	flex: 1;
+	/*Center the book (and later the controls) within that space*/
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/*Prevent the page-flip animation from creating scrollbars*/
+	overflow: hidden;
+}

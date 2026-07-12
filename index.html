@@ -13,12 +13,12 @@
 	<link rel="stylesheet" href="style.css">
 	<!--Language selection css-->
 	<link rel="stylesheet" href="components/languageSelection/languageSelection.css">
-	<!--Book-->
-	<link rel="stylesheet" href="components/book/book.css">
+
+	<!--Page-->
+	<link rel="stylesheet" href="components/book/page.css">
+
 	<!--Footer css-->
 	<link rel="stylesheet" href="components/footer/footer.css">
-	<!--Impressum css-->
-	<link rel="stylesheet" href="components/Impressum/impressum.css">
 </head>
 
 <body>
@@ -42,8 +42,14 @@
 
 	</div>
 
-	<!--Book container - filled dynamically by script.js-->
-	<div id="flipbook"></div>
+	<!--Book-->
+	<main>
+		<!--Book container - filled dynamically by script.js-->
+		<div id="flipbook"></div>
+
+		<!--Placeholder for page navigation controls (buttons, etc.)-->
+		<div class="bookControls"></div>
+	</main>
 
 	<!--Footer-->
 	<footer>

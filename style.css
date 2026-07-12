@@ -15,10 +15,8 @@ html, body {
 }
 
 body {
-	/*Load the wood table texture as the page background*/
-	background-image: url("woodenTable.jpg");
-	/*Background color when image can't be loaded*/
-	background-color: rgb(144, 63, 0);
+	/*For tests*/
+	background-color: rgb(77, 77, 77);
 
 	/*Scale the image to always fully cover the viewport, cropping if needed*/
 	background-size: cover;
@@ -28,18 +26,27 @@ body {
 	background-repeat: no-repeat;
 	/*Keep the background fixed in place while the page scrolls (optional "desk stays put" feel)*/
 	background-attachment: fixed;
-	/*Stack children vertically*/
-	/*Enables Flexbox: allows us to center the flipbook inside it*/
+	/*Stack children (language selection stays fixed/separate, main + footer flow normally)*/
 	display: flex;
 	flex-direction: column;
-	/*Always at least as tall as the viewport*/
+	/*Always fill at least the screen, but allow growing if content is taller*/
 	min-height: 100vh;
-	/*Centers horizontally*/
+
+	/*Default font for the whole page*/
+	font-family: 'Times New Roman', Times, serif;
+}
+
+main {
+	/*For tests*/
+	/*background-color: blue;
+
+	/*Take up all leftover vertical space between the top of the page and the footer*/
+	flex: 1;
+	/*Center the book (and later the controls) within that space*/
+	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	/*Centers vertically*/
 	align-items: center;
-	/*Full viewport height, so vertical centering has room to work with*/
-	height: 100vh;
-	/*Prevents scrollbar during the page flip animation*/
+	/*Prevent the page-flip animation from creating scrollbars*/
 	overflow: hidden;
 }
