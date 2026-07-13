@@ -3,8 +3,6 @@
 	width: 900px;
 	/*Height of the book*/
 	height: 600px;
-	/*Casts a soft shadow onto the table background, as if the book is resting on it*/
-	/*box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);/**/
 }
 
 #flipbook .hard {
@@ -45,7 +43,7 @@
 	position: relative;
 	/*Ensure it's painted above .cover-image*/
 	z-index: 1;
-
+	/*Size*/
 	width: 500px;
 }
 
