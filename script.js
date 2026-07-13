@@ -2,17 +2,19 @@
 // *****************
 // Holds the currently selected language (default value is "de" for german)
 let language = "de";
+
 // Get all language buttons
 const languageButtons = document.querySelectorAll(".languageButton");
+
 // List of chapter files, in the order they should appear in the book
 const bookFiles = [
-	"frontCover",/**/
-	"dedication",/**/
-	"tableOfContents"/**/,
-	"mythology",/**/
-	"mythologyAct1",/**/
-	"credits",/**/
-	"backCover",/**/
+	"frontCover",
+	"dedication",
+	"tableOfContents",
+	"mythology",
+	"mythologyHistoryOfOrigins",
+	"credits",
+	"backCover"
 ];
 
 // Main Script part
@@ -28,25 +30,30 @@ createBook();
  * Create book
  */
 async function createBook() {
-	console.log("createBook start");
-
 	// Get flip book by ID
 	const flipbook = document.getElementById("flipbook");
-	console.log("flipbook gotten");
+
+	// Clear out any previous build (needed when switching language)
+	flipbook.innerHTML = "";
 
 	// Load every file of the book
 	for (const file of bookFiles) {
-		const response = await fetch("components/book/" + file + ".html");
+		const response = await fetch(`book/${language}/${file}.html`);
 		const html = await response.text();
 		flipbook.innerHTML += html;
 	}
-	console.log("files loaded");
 
 	// Automatically number every normal page (not the hard covers)
 	addPageNumbers(flipbook);
 
 	// Create table of content dynamicly
 	createTableOfContents(flipbook);
+
+	// If turn.js was already initialized (i.e. this is a language switch, not the first load),
+	// destroy it first, so it doesn't try to layer a new book on top of the old one
+	if ($("#flipbook").data("turn")) {
+		$("#flipbook").turn("destroy");
+	}
 
 	// Initialize Turn.js
 	$("#flipbook").turn({
@@ -58,8 +65,6 @@ async function createBook() {
 
 	// Enable turning pages with the left/right arrow keys
 	enableKeyboardNavigation();
-
-	console.log("createBook end");
 }
 
 /**
@@ -166,12 +171,9 @@ function enableKeyboardNavigation() {
 // Add a click listener to each button
 languageButtons.forEach((button) => {
 	button.addEventListener("click", () => {
-		// Read the language code from the button's data-lang attribute
+		// Set language
 		language = button.dataset.lang;
-
-		// Log it for now, so we can see it's working
-		console.log("Language changed to:", language);
-
-		// TODO: update the page text once the translations exist
+		// Rebuild the entire book in the newly selected language
+		createBook();
 	});
 });
