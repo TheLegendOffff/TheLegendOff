@@ -3,6 +3,8 @@
 	width: 900px;
 	/*Height of the book*/
 	height: 600px;
+	/*Casts a soft shadow onto the table background, as if the book is resting on it*/
+	/*box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);/**/
 }
 
 #flipbook .hard {
@@ -13,13 +15,180 @@
 	/*Text color - warm off-white*/
 	color: #f5f0e8;
 	/*Larger text for the cover title*/
-	font-size: 24px; 
-	/*Classic book font*/
-	font-family: Georgia, serif;
+	font-size: 24px;
 	/*Enables Flexbox to center the cover text*/
 	display: flex;
 	/*Centers text horizontally*/
 	justify-content: center;
 	/*Centers text vertically*/
 	align-items: center;
+	/*Ensure the cover has an actual area to display its background image on*/
+	width: 100%;
+	height: 100%;
+}
+
+.cover-image {
+	/*Position it to fill the entire .hard container, ignoring normal document flow*/
+	position: absolute;
+	/*Needed for position absolute*/
+	top: 1;
+
+	/*Size*/
+	width: 100%;
+	height: 100%;
+	/*Stretch/crop to fill without distorting the image*/
+	object-fit: cover;
+}
+
+.cover-logo {
+	/*Needed so z-index has an effect, and to control its position independently*/
+	position: relative;
+	/*Ensure it's painted above .cover-image*/
+	z-index: 1;
+
+	width: 500px;
+}
+
+.page {
+	/*Fallback color when the image can't be loaded*/
+	background-color: wheat;
+	/*Load the page texture as background, fills the whole page*/
+	background-image: url("../../images/page.jpg");
+	/*Scale the image to always fully cover the page, cropping if needed*/
+	background-size: cover;
+	/*Center the image so the most interesting part stays visible*/
+	background-position: center;
+	/*Don't tile/repeat the image*/
+	background-repeat: no-repeat;
+
+	width: 100%;
+	height: 100%;
+
+	/*Needed so the page-number below can be positioned relative to this page*/
+	position: relative;
+	/*Enables centering the dedication content inside*/
+	display: flex;
+	flex-direction: column;
+}
+
+.page-content {
+	width: 100%;
+	height: 100%;
+	padding: 3rem;
+	display: flex;
+	flex-direction: column;
+}
+
+.chapter-divider {
+	/*Center the chapter name both horizontally and vertically on the page*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.chapter-divider-title {
+	font-size: 36px;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
+.title-text {
+	/*Larger than normal text, so it stands out as a heading*/
+	font-size: 28px;
+	color: #000000;
+	/*Ensure the title spans the full page width, so text-align: center has room to work*/
+	width: 100%;
+	/*Center the title text horizontally*/
+	text-align: center;
+	/*Distence between top edge*/
+	/*padding-top: 60px;/**/
+}
+
+.title-underline {
+	/*Load the divider image as a background instead of an <img> tag - 
+	  path is relative to this CSS file, not to index.html*/
+	background-image: url("../../images/underline.png");
+	/*Show the whole image without cropping or stretching*/
+	background-size: contain;
+	/*Center it horizontally within the element*/
+	background-position: center;
+	/*Don't tile the image*/
+	background-repeat: no-repeat;
+
+	/*Control the divider's width directly here*/
+	/*Since it's no longer an <img>, we need to give it explicit dimensions -
+	  a background-image has no natural size on its own like an <img> would*/
+	width: 80%;
+	height: 15%;/**/
+	
+	/*Images are inline by default and don't respect text-align on a flex parent - 
+	  make it block-level so it can be centered with margin auto*/
+	margin: 0 auto;
+	/*Pull it up closer to the title, overriding the page-title's own spacing below it*/
+	margin-top: -15px;
+}
+
+.initiale {
+	/*Makes the text flow around the image instead of pushing it down*/
+	float: left;
+	/*Size of the big initial letter image*/
+	width: 65px;
+	/*Small gap between the letter and the wrapping text*/
+	margin-top: 5px;
+	margin-right: 8px;
+	margin-bottom: 4px;
+}
+
+.page-number {
+	/*Positions relative to .page*/
+	position: absolute;
+	/*Distance from bottom of the page*/
+	bottom: 5px;
+	/*Start at horizontal center*/
+	left: 50%;
+	/*Shifts it back by half its own width to truly center it*/
+	transform: translateX(-50%);
+	font-family: 'Times New Roman', Times, serif;
+	font-size: 12px;
+	color: #000000;
+}
+
+.dedication {
+	/*Take up all remaining space inside .page, so centering has room to work with*/
+	flex: 1;
+	/*Center the text both horizontally and vertically*/
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	/*Some breathing room from the page edges*/
+	padding: 3rem;
+
+	font-style: italic;
+}
+
+.chapterList li {
+	padding: 8px 0;
+	/*No more border-bottom line*/
+	display: flex;
+	/*Keeps text and dots aligned along the same baseline*/
+	align-items: baseline;
+}
+
+.chapterList a {
+	color: inherit;
+	text-decoration: none;
+	/*Prevent long chapter titles from wrapping onto a second line*/
+	white-space: nowrap;
+}
+
+/*Fills the remaining space between title and page number with a dotted line*/
+.chapterList .leader {
+	flex: 1;
+	border-bottom: 1px dotted #000000;
+	margin: 0 6px;
+}
+
+.chapterList a:hover {
+	text-decoration: underline;
 }

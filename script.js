@@ -11,7 +11,7 @@ const bookFiles = [
 	"tableOfContents"/**/,
 	"mythology",/**/
 	"mythologyAct1",/**/
-	"page",/**/
+	"credits",/**/
 	"backCover",/**/
 ];
 

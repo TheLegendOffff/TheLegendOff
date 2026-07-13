@@ -15,8 +15,10 @@ html, body {
 }
 
 body {
-	/*For tests*/
-	background-color: rgb(77, 77, 77);
+	/*Fallback color when the image can't be loaded*/
+	background-color: rgb(114, 114, 114);
+	/*Load the page texture as background, fills the whole page*/
+	background-image: url("woodenTable.jpg");
 
 	/*Scale the image to always fully cover the viewport, cropping if needed*/
 	background-size: cover;
