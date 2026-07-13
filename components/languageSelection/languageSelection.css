@@ -20,9 +20,9 @@
 	/*Post-it yellow*/
 	background-color: #F2D477;
 	/*Dark brown text so it reads like handwriting on paper*/
-	color: #6B5416;
+	color: #000000;
 	/*Small fixed size so all three notes look the same*/
-	width: 70px;
+	width: 77px;
 	height: 70px;
 	/*No border, post-its don't have one*/
 	border: none;
