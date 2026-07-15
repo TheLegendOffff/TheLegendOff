@@ -21,7 +21,7 @@ const bookFiles = [
 // *************************************************************************
 
 // Create the book from the bookFiles
-createBook();
+createBook(getStartPageFromUrl());
 
 // Functions
 // *************************************************************************
@@ -29,7 +29,7 @@ createBook();
 /**
  * Create book
  */
-async function createBook() {
+async function createBook(startPage = 1) {
 	// Get flip book by ID
 	const flipbook = document.getElementById("flipbook");
 
@@ -60,8 +60,12 @@ async function createBook() {
 		width: 900,
 		height: 600,
 		autoCenter: true,
-		gradients: true
+		gradients: true,
+		page: startPage
 	});
+
+	// Keep the URL in sync with the currently visible page
+	enableUrlSync();
 
 	// Enable turning pages with the left/right arrow keys
 	enableKeyboardNavigation();
@@ -173,7 +177,22 @@ languageButtons.forEach((button) => {
 	button.addEventListener("click", () => {
 		// Set language
 		language = button.dataset.lang;
+		// Get page number
+		const currentPage = $("#flipbook").turn("page") || 1;
 		// Rebuild the entire book in the newly selected language
-		createBook();
+		createBook(currentPage);
 	});
 });
+
+// Updates the URL to reflect the currently visible page, without reloading or adding browser history entries
+function enableUrlSync() {
+	$("#flipbook").bind("turned", (event, page) => {
+		history.replaceState(null, "", "#" + page);
+	});
+}
+
+// Reads the page number from the URL (e.g. "#page-5" -> 5). Defaults to 1 if none is set.
+function getStartPageFromUrl() {
+	const match = location.hash.match(/^#(\d+)$/);
+	return match ? Number(match[1]) : 1;
+}
