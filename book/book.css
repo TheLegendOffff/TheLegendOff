@@ -9,7 +9,7 @@
 	/* Removes the page image from the cover */
 	background-image: none !important;
 	/*Dark brown - like a leather book cover*/
-	background-color: #552c00;
+	background-color: #552c00; 
 	/*Text color - warm off-white*/
 	color: #f5f0e8;
 	/*Larger text for the cover title*/
@@ -23,10 +23,10 @@
 	/*Same size as the pages - critical for turn.js to calculate correctly*/
 	width: 100%;
 	height: 100%;
-	/*Needed so .cover-image and the box-shadow overhang position correctly*/
+	/*Needed so .cover-image and .hard-frame position correctly*/
 	position: relative;
-	/*Visually overhangs the pages on every side - moves together with the cover during flipping*/
-	box-shadow: 0 0 0 8px #552c00;
+	/*Inset frame instead of overhang - stays within the clipped page bounds, so it's actually visible*/
+	box-shadow: inset 0 0 0 10px #3d2000;
 }
 
 .cover-image {
@@ -80,9 +80,6 @@
 	background-position: center;
 	/*Don't tile/repeat the image*/
 	background-repeat: no-repeat;
-
-	width: 100%;
-	height: 100%;
 
 	/*Needed so the page-number below can be positioned relative to this page*/
 	position: relative;

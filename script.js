@@ -9,11 +9,11 @@ const languageButtons = document.querySelectorAll(".languageButton");
 // List of chapter files, in the order they should appear in the book
 const bookFiles = [
 	"frontCover",
-	"dedication",
+	//"dedication",
 	"tableOfContents",
-	"mythology",
-	"mythologyHistoryOfOrigins",
-	"credits",
+	//"mythology",
+	//"mythologyHistoryOfOrigins",
+	//"credits",
 	"backCover"
 ];
 
